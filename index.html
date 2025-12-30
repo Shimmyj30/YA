@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>יניר אשכנזי | פסיכולוג קליני</title>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #4a6fa5; /* כחול מרגיע */
+            --secondary-color: #f4f7f6; /* רקע בהיר */
+            --accent-color: #16a085; /* ירוק עדין לכפתורים */
+            --text-color: #333;
+            --light-text: #666;
+            --shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Heebo', sans-serif;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* --- תפריט ניווט --- */
+        nav {
+            background: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links li button {
+            background: none;
+            border: none;
+            font-family: inherit;
+            font-size: 1rem;
+            cursor: pointer;
+            color: var(--text-color);
+            padding: 5px 10px;
+            transition: color 0.3s;
+        }
+
+        .nav-links li button:hover, .nav-links li button.active {
+            color: var(--primary-color);
+            font-weight: bold;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        /* --- תוכן כללי --- */
+        main {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 20px;
+            min-height: 80vh;
+        }
+
+        .section-content {
+            display: none; /* מוסתר כברירת מחדל */
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .section-content.active {
+            display: block; /* מוצג אם פעיל */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- דף הבית --- */
+        .hero {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            margin-bottom: 40px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .credentials {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .credentials li {
+            margin-bottom: 10px;
+            color: var(--light-text);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .credentials i {
+            color: var(--accent-color);
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        /* --- קלפים (הטיפול מיועד ל...) --- */
+        .cards-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .card p {
+            color: var(--light-text);
+            font-size: 0.95rem;
+        }
+
+        /* --- דף אודות --- */
+        .about-container {
+            background: white;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .about-container h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .about-container p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        /* --- צור קשר --- */
+        .contact-container {
+            text-align: center;
+            padding: 50px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #25D366;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+        }
+
+        /* --- התאמה לנייד --- */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding: 20px;
+            }
+
+            .nav-links {
+                display: none; /* אפשר להוסיף המבורגר אם רוצים, כרגע פשוט לקריאות */
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background: white;
+                width: 100%;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                padding: 20px;
+            }
+            
+            /* תפריט גלילה לנייד - פשוט */
+            nav {
+                flex-wrap: wrap;
+            }
+            .nav-links {
+                display: flex;
+                flex-direction: row;
+                font-size: 0.9rem;
+                overflow-x: auto;
+                width: 100%;
+                padding: 10px 0;
+                justify-content: flex-start;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">יניר אשכנזי</div>
+        <ul class="nav-links">
+            <li><button onclick="showSection('home')" class="active" id="btn-home">בית</button></li>
+            <li><button onclick="showSection('about')" id="btn-about">אודות</button></li>
+            <li><button onclick="showSection('therapy')" id="btn-therapy">טיפול</button></li>
+            <li><button onclick="showSection('groups')" id="btn-groups">קבוצות</button></li>
+            <li><button onclick="showSection('lectures')" id="btn-lectures">הרצאות</button></li>
+            <li><button onclick="showSection('contact')" id="btn-contact">צור קשר</button></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="home" class="section-content active">
+            <div class="hero">
+                <div class="hero-text">
+                    <h1>יניר אשכנזי</h1>
+                    <h2>פסיכולוג קליני</h2>
+                    <ul class="credentials">
+                        <li><i class="fas fa-graduation-cap"></i> תואר ראשון (B.A) בפסיכולוגיה, האוניברסיטה העברית.</li>
+                        <li><i class="fas fa-graduation-cap"></i> תואר שני (M.A) בפסיכולוגיה קלינית, אוניברסיטת רייכמן.</li>
+                        <li><i class="fas fa-users"></i> הכשרת בניית קבוצות מטעם מכון נגיד, היחידה ללימודי המשך האוניברסיטה העברית.</li>
+                    </ul>
+                </div>
+                <div class="hero-image">
+                    <img src="yanir.jpeg" alt="יניר אשכנזי">
+                </div>
+            </div>
+
+            <h2 class="cards-title">הטיפול מיועד למי שחווה</h2>
+            
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-head-side-virus"></i></div>
+                    <h3>קושי</h3>
+                    <p>כולנו חווים רגעים מאתגרים בהם נראה שאין מוצא. בטיפול נעמיק ונמצא יחד את הדרך להתמודד עם הקושי.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-door-open"></i></div>
+                    <h3>אירוע חיים משמעותי</h3>
+                    <p>שינויים גדולים יכולים להוביל לחוסר איזון רגשי. הטיפול יסייע לך לעבד את החוויה ולמצוא משמעות.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-route"></i></div>
+                    <h3>תחושת תקיעות</h3>
+                    <p>כשחשים תקועים, לפעמים מה שדרוש זה מבט חדש. בטיפול נמצא את המפתח להתקדמות.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-lightbulb"></i></div>
+                    <h3>סקרנות נפשית</h3>
+                    <p>להבין את עצמך טוב יותר זו מתנה ייחודית. הטיפול מזמין אותך למסע מרתק פנימה.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section-content">
+            <div class="about-container">
+                <h2>נעים מאוד, אני יניר אשכנזי</h2>
+                <p>כפסיכולוג קליני המתמקד בעבודה עם טראומה, חוסן אישי ומשברי חיים, אני מלווה אנשים בתהליכים עמוקים של עיבוד והתמודדות. יחד, אנו יוצרים מרחב בטוח המאפשר התבוננות פנימית, התחזקות, והתקדמות לקראת תחושת שלמות ומשמעות חדשה.</p>
+                <p>הקליניקה שלי ממוקמת בירושלים, ואני עובד גם באמצעות מפגשי זום. אני מתמחה בעבודה עם אנשים שחוו טראומה צבאית, משברי חיים משמעותיים, אנשי מילואים, ואנשים שמבקשים להתמודד עם אתגרי היומיום או חוויות מורכבות כמו אובדן ושכול.</p>
+                <p>המסע האישי שלי, הכולל גם התמודדות עם חוויות טראומטיות שלי כאיש מילואים, הביא אותי להתמחות ולהקדיש את חיי המקצועיים למתן מענה עמוק ומשמעותי לאנשים שמתמודדים עם כאב ומשברים. לאורך השנים למדתי כיצד אפשר לעבד חוויות כואבות ולבנות חוסן שמאפשר לחזור לחיים מתוך תחושת ביטחון, ערך, ורוגע פנימי.</p>
+                <p>הגישה שלי היא אינטגרטיבית, המשלבת כלים פסיכודינמיים, עבודה קוגניטיבית-התנהגותית (CBT) ומיינדפולנס. אני מאמין כי בעזרת התבוננות עמוקה ופעולה מכוונת ניתן לצמוח מתוך משברים ולחזור לחיים מלאים ומשמעותיים.</p>
+                <p><strong>אשמח ללוות אותך במסע שלך.</strong></p>
+            </div>
+        </section>
+
+        <section id="therapy" class="section-content">
+            <div class="about-container">
+                <h2>טיפול</h2>
+                <p>מידע על הטיפולים יעודכן בקרוב.</p>
+            </div>
+        </section>
+
+        <section id="groups" class="section-content">
+            <div class="about-container">
+                <h2>קבוצות</h2>
+                <p>מידע על הקבוצות יעודכן בקרוב.</p>
+            </div>
+        </section>
+
+        <section id="lectures" class="section-content">
+            <div class="about-container">
+                <h2>הרצאות</h2>
+                <p>מידע על ההרצאות יעודכן בקרוב.</p>
+            </div>
+        </section>
+
+        <section id="contact" class="section-content">
+            <div class="contact-container">
+                <h2>צור קשר</h2>
+                <p>מוזמנים ליצור איתי קשר לתיאום פגישה או התייעצות</p>
+                <a href="https://wa.me/972525959271" class="whatsapp-btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i> שלח הודעה לווטסאפ (052-595-9271)
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        function showSection(sectionId) {
+            // הסתרת כל הסקשנים
+            const sections = document.querySelectorAll('.section-content');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // הסרת סימון פעיל מהתפריט
+            const buttons = document.querySelectorAll('.nav-links button');
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // הצגת הסקשן הנבחר
+            document.getElementById(sectionId).classList.add('active');
+            
+            // סימון הכפתור כפעיל
+            document.getElementById('btn-' + sectionId).classList.add('active');
+
+            // גלילה למעלה בנייד
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
